@@ -1,5 +1,6 @@
 // @ts-ignore see https://github.com/jest-community/jest-extended#setup
 import * as matchers from "jest-extended";
+import distance from './index';
 
 expect.extend(matchers);
 
