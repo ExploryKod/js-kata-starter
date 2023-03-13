@@ -1,13 +1,111 @@
-// @ts-ignore see https://github.com/jest-community/jest-extended#setup
-import * as matchers from "jest-extended";
-import distance from './index';
+import computeManhattanDistance, { Point } from ".";
 
-expect.extend(matchers);
+test("The distance between a point and itself should equal zero", () => {
+  // GIVEN
+  const a: Point = {
+    x: 0,
+    y: 0,
+  };
 
-test("That's a test!", () => {
-  expect(1 + 1).toEqual(2);
+  // WHEN
+  const actual = computeManhattanDistance(a, a);
+
+  // THEN
+  const expected: number = 0;
+  expect(actual).toEqual(expected);
 });
 
-test("jest-extended is included", () => {
-  expect([1, 0]).toIncludeSameMembers([0, 1]);
+test("Compute the distance on the x axis", () => {
+  // GIVEN
+  const a: Point = {
+    x: 1,
+    y: 0,
+  };
+  const b: Point = {
+    x: 2,
+    y: 0,
+  };
+
+  // WHEN
+  const actual = computeManhattanDistance(a, b);
+
+  // THEN
+  const expected: number = 1;
+  expect(actual).toEqual(expected);
+});
+
+test("A distance must be a positive number", () => {
+  // GIVEN
+  const a: Point = {
+    x: 0,
+    y: 0,
+  };
+  const b: Point = {
+    x: -1,
+    y: 0,
+  };
+
+  // WHEN
+  const actual = computeManhattanDistance(a, b);
+
+  // THEN
+  const expected: number = 1;
+  expect(actual).toEqual(expected);
+});
+
+test("Compute the distance on the y axis", () => {
+  // GIVEN
+  const a: Point = {
+    x: 0,
+    y: 0,
+  };
+  const b: Point = {
+    x: 0,
+    y: 1,
+  };
+
+  // WHEN
+  const actual = computeManhattanDistance(a, b);
+
+  // THEN
+  const expected: number = 1;
+  expect(actual).toEqual(expected);
+});
+
+test("Compute the distance on the y axis", () => {
+  // GIVEN
+  const a: Point = {
+    x: 0,
+    y: 3,
+  };
+  const b: Point = {
+    x: 0,
+    y: 1,
+  };
+
+  // WHEN
+  const actual = computeManhattanDistance(a, b);
+
+  // THEN
+  const expected: number = 2;
+  expect(actual).toEqual(expected);
+});
+
+test("Compute the manhattan distance (both x and y dimensions)", () => {
+  // GIVEN
+  const a: Point = {
+    x: 0,
+    y: 0,
+  };
+  const b: Point = {
+    x: 1,
+    y: 1,
+  };
+
+  // WHEN
+  const actual = computeManhattanDistance(a, b);
+
+  // THEN
+  const expected: number = 2;
+  expect(actual).toEqual(expected);
 });

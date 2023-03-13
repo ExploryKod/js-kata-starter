@@ -1,33 +1,17 @@
-
-function createLine(max: number): string {
-
-    const star: string = "*";
-    let starLine: string = "";
-
-    if (!Number.isInteger(max)) {
-        return "choisir un integer impair"
-    } else if (max % 0 === 2) {
-        return "choisir un nombre impair"
-    } else {
-        for (let i: number = 0; i < max; i++) {
-            starLine += star
-        };
-    }
-
-    return starLine;
-}
-
-function sliceUpperLines(max: number) {
-
-
-    return triangle;
-}
-
-function distance {
-
-}
-
-console.log(createMiddleLine(7));
-console.log(sliceUpperLines(7));
-
-export default distance
+export type Point = {
+    x: number;
+    y: number;
+  };
+  
+  const computeOneDimensionDistance = (a: number, b: number) => {
+    return Math.abs(b - a);
+  };
+  
+  const computeManhattanDistance = (a: Point, b: Point): number => {
+    return (
+      computeOneDimensionDistance(b.x, a.x) + //
+      computeOneDimensionDistance(b.y, a.y)
+    );
+  };
+  
+  export default computeManhattanDistance;
