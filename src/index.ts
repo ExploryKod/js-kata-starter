@@ -1,28 +1,25 @@
+const isMultipleOf = (divider: number, n: number): boolean => {
+    return n % divider === 0;
+};
 
-function createLine(max:number):string { 
+export const replace = (n: number): string => {
+    let result = "";
 
-    const star:string = "*";
-    let starLine:string = "";
-    
-    if(!Number.isInteger(max)) { 
-        return "choisir un integer impair"
-    } else if(max % 0 === 2) { 
-       return "choisir un nombre impair"
-    } else { 
-        for(let i:number = 0; i < max; i++) { 
-            starLine += star
-        };
+    if (isMultipleOf(3, n)) {
+        result += "Fizz";
     }
- 
-    return starLine;
-}
 
-function sliceUpperLines(max:number) { 
-    
+    if (isMultipleOf(5, n)) {
+        result += "Buzz";
+    }
 
-    return triangle;
-}
+    return result || n.toString();
+};
 
+const range = (n: number): number[] => {
+    return [...new Array(n)].map((_, index) => index + 1);
+};
 
-console.log(createMiddleLine(7));
-console.log(sliceUpperLines(7));
+export const fizzBuzz = (n: number): string[] => {
+    return range(n).map(replace);
+};
